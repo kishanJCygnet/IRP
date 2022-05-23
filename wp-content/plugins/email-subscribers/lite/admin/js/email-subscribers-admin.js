@@ -215,6 +215,23 @@
 				var groupselect = jQuery('.groupsselect')[0].outerHTML;
 			}
 
+			// Audience filter switch for Advanced filter
+
+			jQuery('.ig-es-switch.js-toggle-collapse').click(function(event){
+				event.preventDefault();
+				let $switch, state, new_state;
+				$switch = jQuery(this);
+				state     = $switch.attr( 'data-ig-es-switch' );
+				new_state = state === 'active' ? 'inactive' : 'active';
+				$switch.attr( 'data-ig-es-switch', new_state );
+				if(new_state === 'active'){
+					jQuery('.es-collapsible').show();
+				}
+				else{
+					jQuery('.es-collapsible').hide();
+				}
+			})
+
 			//Upsell Send confirmation email on Audience screen
 			$(".email-subscribers_page_es_subscribers #bulk-action-selector-top option[value=bulk_send_confirmation_email_upsell").attr('disabled','disabled');
 			jQuery(".es-audience-view .bulkactions #bulk-action-selector-top").after(statusselect);
@@ -1019,7 +1036,7 @@
 				});
 			});
 
-			$('.wp-campaign-body-editor, #edit-es-campaign-body,textarea[name="campaign_data[body]"],#ig_es_campaign_subject').on('change',function(event){
+			$('#edit-campaign-form-container').on('change','.wp-campaign-body-editor, #edit-es-campaign-body,textarea[name="campaign_data[body]"],#ig_es_campaign_subject',function(event){
 
 				ig_es_sync_wp_editor_content();
 
@@ -2918,6 +2935,8 @@ function ig_es_is_valid_json( string ) {
 	}
 	return true;
 }
+
+
 
 window.ig_es_is_valid_json = ig_es_is_valid_json;
 
