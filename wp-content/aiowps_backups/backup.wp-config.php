@@ -95,4 +95,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 require_once ABSPATH . 'wp-settings.php';
 
 /** Define theme path. */
-define('THEME_PATH', site_url().'/wp-content/themes/fintech/');
+define('THEME_PATH', site_url().'/wp-content/themes/IRP/');

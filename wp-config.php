@@ -20,7 +20,7 @@
 
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', 'irpdb' );
+define( 'DB_NAME', 'cygnet-irp' );
 
 /** Database username */
 define( 'DB_USER', 'root' );
@@ -95,6 +95,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 require_once ABSPATH . 'wp-settings.php';
 
 /** Define theme path. */
-define('THEME_PATH', site_url().'/wp-content/themes/fintech/');
+define('THEME_PATH', site_url().'/wp-content/themes/IRP/');
 //Disable File Edits
 define('DISALLOW_FILE_EDIT', true);
