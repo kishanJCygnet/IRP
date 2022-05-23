@@ -8,7 +8,7 @@ $parenthandle = 'twentytwentyone-style'; // This is 'twentyfifteen-style' for th
         $theme->parent()->get('Version')
     );
 	
-    wp_enqueue_style( 'fintech-style', get_stylesheet_uri());
+    wp_enqueue_style( 'IRP-style', get_stylesheet_uri());
 	//wp_enqueue_style('bootstrap.min', get_template_directory_uri() . '/bootstrap.min.css');
 	
     /*wp_localize_script('cygnet-global', 'ajaxPath', array(
@@ -36,20 +36,20 @@ if (function_exists('acf_add_options_page')) {
 }
 
 /**
-  Function name : fintech_setup
+  Function name : IRP_setup
   Sets up theme defaults and registers support for various WordPress features.
   Note that this function is hooked into the after_setup_theme hook, which
   runs before the init hook. The init hook is too late for some features, such
   as indicating support for post thumbnail .
  */
-function fintech_setup()
+function IRP_setup()
 {
-    //Load fintech-deparments theme
-    load_theme_textdomain('fintech');
+    //Load IRP-deparments theme
+    load_theme_textdomain('IRP');
     //Enable support for Post Thumbnails on posts and pages.
     add_theme_support('post-thumbnails');
     //Add the size of featured image on posts and pages.
-    //add_image_size('fintech_setup-featured-image', 2000, 1200, true);
+    //add_image_size('IRP_setup-featured-image', 2000, 1200, true);
     //Switch default core markup for search form, comment form, and comments to output valid HTML5.
     add_theme_support('html5', array(
         'comment-form',
@@ -72,9 +72,9 @@ function fintech_setup()
     // This theme uses wp_nav_menu() in two locations.
     register_nav_menus(
         array(
-            'header_menu' => __('Header Menu', 'fintech'),
-            'footer_menu' => __('Footer Menu', 'fintech'),
-            'menu_above_search' => __('Menu Above Search', 'fintech')
+            'header_menu' => __('Header Menu', 'IRP'),
+            'footer_menu' => __('Footer Menu', 'IRP'),
+            'menu_above_search' => __('Menu Above Search', 'IRP')
         )
     );
     //Add different image sizes
@@ -83,7 +83,7 @@ function fintech_setup()
     add_image_size('1250w', 1250);
     add_image_size('1920w', 1900);*/
 }
-add_action('after_setup_theme', 'fintech_setup');
+add_action('after_setup_theme', 'IRP_setup');
 
 
 /* Added code 22-3-2022 */
