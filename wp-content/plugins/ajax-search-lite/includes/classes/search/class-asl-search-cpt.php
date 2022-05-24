@@ -8,7 +8,7 @@ if ( ! class_exists( 'ASL_Search_CPT' ) ) {
 	 *
 	 * @class       ASL_Search_CPT
 	 * @version     2.0
-	 * @package     AjaxSearchLite/Classes/Search
+	 * @package     AjaxSearchPro/Classes/Search
 	 * @category    Class
 	 * @author      Ernest Marcinko
 	 */

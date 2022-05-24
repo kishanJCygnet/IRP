@@ -73,7 +73,7 @@ jQuery(function($){
             $(this).parent().addClass("active");
         }
         $(hidden).val(val);
-        $(hidden).trigger('change').trigger('input');
+        $(hidden).change();
     });
     $('.wpdreamsYesNo .triggerer').on('click', function () {
         var hidden = $('input[type=hidden]', $(this).parent());
@@ -84,7 +84,7 @@ jQuery(function($){
         } else {
             div.addClass("active");
         }
-        $(hidden).trigger('change').trigger('input');
+        $(hidden).change();
     });
 
     /**
