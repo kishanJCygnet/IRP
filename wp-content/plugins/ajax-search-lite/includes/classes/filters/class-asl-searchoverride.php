@@ -9,7 +9,7 @@ if (!class_exists("WD_ASL_SearchOverride_Filter")) {
      *
      * @class         WD_ASL_SearchOverride_Filter
      * @version       1.0
-     * @package       AjaxSearchLite/Classes/Filters
+     * @package       AjaxSearchPro/Classes/Filters
      * @category      Class
      * @author        Ernest Marcinko
      */
