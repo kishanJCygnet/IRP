@@ -31,9 +31,6 @@
 			),
 			'value'=>$sd['primary_titlefield']
 		));
-		?>
-		<div wd-show-on="primary_titlefield:c__f">
-		<?php
 		$params[$o->getName()] = $o->getData();
 		$o = new wd_CFSearchCallBack('primary_titlefield_cf', '', array(
 			'value'=>$sd['primary_titlefield_cf'],
@@ -44,7 +41,6 @@
 		));
 		$params[$o->getName()] = $o->getData();
 		?>
-		</div>
 	</div>
 	<div class="item item-flex-nogrow" style="flex-wrap: wrap;">
 		<?php
@@ -58,9 +54,6 @@
 			'value'=>$sd['primary_descriptionfield']
 		));
 		$params[$o->getName()] = $o->getData();
-		?>
-		<div wd-show-on="primary_descriptionfield:c__f">
-		<?php
 		$o = new wd_CFSearchCallBack('primary_descriptionfield_cf', '', array(
 			'value'=>$sd['primary_descriptionfield_cf'],
 			'args'=> array(
@@ -70,7 +63,6 @@
 		));
 		$params[$o->getName()] = $o->getData();
 		?>
-		</div>
 	</div>
 </fieldset>
 <fieldset>

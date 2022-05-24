@@ -15,5 +15,12 @@ jQuery(function ($) {
         location.hash = $(this).attr('tabid');
     });
 
-    WPD.Conditionals.init('.tabscontent');
+    $('input[name=selective_enabled]').on('change', function(){
+       if ( $(this).val() == 0 ) {
+           $(this).closest('fieldset').find('.item_selective_load').addClass('disabled');
+       } else {
+           $(this).closest('fieldset').find('.item_selective_load').removeClass('disabled');
+       }
+    });
+    $('input[name=selective_enabled]').trigger('change');
 });
