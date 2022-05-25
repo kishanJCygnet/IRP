@@ -67,33 +67,33 @@ jQuery(function() {
 
 });
 
-     // Define selector for selecting
-        // anchor links with the hash
-        let anchorSelector = '.custom-tab-section .custom-tab-nav li a[href^="#"]';
+    //  // Define selector for selecting
+    //     // anchor links with the hash
+    //     let anchorSelector = '.custom-tab-section .custom-tab-nav li a[href^="#"]';
      
-        // Collect all such anchor links
-        let anchorList =
-            document.querySelectorAll(anchorSelector);
+    //     // Collect all such anchor links
+    //     let anchorList =
+    //         document.querySelectorAll(anchorSelector);
          
-        // Iterate through each of the links
-        anchorList.forEach(link => {
-            link.onclick = function (e) {
-                // Prevent scrolling if the
-                // hash value is blank
-                e.preventDefault();
+    //     // Iterate through each of the links
+    //     anchorList.forEach(link => {
+    //         link.onclick = function (e) {
+    //             // Prevent scrolling if the
+    //             // hash value is blank
+    //             e.preventDefault();
          
-                // Get the destination to scroll to
-                // using the hash property
-                let destination =
-                    document.querySelector(this.hash);         
-                // Scroll to the destination using
-                // scrollIntoView method
-                destination.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'nearest' 
-                });
-            }
-        });
+    //             // Get the destination to scroll to
+    //             // using the hash property
+    //             let destination =
+    //                 document.querySelector(this.hash);         
+    //             // Scroll to the destination using
+    //             // scrollIntoView method
+    //             destination.scrollIntoView({
+    //                 behavior: 'smooth',
+    //                 block: 'nearest' 
+    //             });
+    //         }
+    //     });
 
 
   jQuery(window).scroll(function() {
@@ -110,12 +110,12 @@ function AddReadMore() {
   //This limit you can set after how much characters you want to show Read More.
   var carLmt = 20;
   // Text to show when text is collapsed
-  var readMoreTxt = " Read More";
+  var readMoreTxt = " View More";
   // Text to show when text is expanded
-  var readLessTxt = " Read Less";
+  var readLessTxt = " View Less";
   
   //Traverse all selectors with this class and manupulate HTML part to show Read More
-  jQuery(".icon-box .description").each(function() {
+  jQuery(".icon-box .iconbox-description").each(function() {
     
     //alert(words.length);
       if (jQuery(this).find(".firstSec").length)
@@ -134,7 +134,7 @@ function AddReadMore() {
         }        
           
         if(secdHalf != ''){
-            var strtoadd = firstSet + "<span class='dot'>...</span>" + "<span class='SecSec'>" + secdHalf + "</span><span class='readMore'  title='Click to Show More'>" + readMoreTxt + "</span><span class='readLess' title='Click to Show Less'>" + readLessTxt + "</span>";
+            var strtoadd = firstSet + "<span class='dot'>...</span>" + "<span class='SecSec'>" + secdHalf + "</span><span class='readMore'  title='Click to Show More'>" + readMoreTxt + " </span><span class='readLess' title='Click to Show Less'>" + readLessTxt + "</span>";
          }
          else{
           var strtoadd = firstSet;
@@ -145,7 +145,7 @@ function AddReadMore() {
   });
   //Read More and Read Less Click Event binding
   jQuery(document).on("click", ".readMore, .readLess", function() {
-      jQuery(this).closest(".icon-box .description").toggleClass("showlesscontent showmorecontent");
+      jQuery(this).closest(".icon-box .iconbox-description").toggleClass("showlesscontent showmorecontent");
   });
 }
 jQuery(function() {
@@ -359,19 +359,19 @@ setInterval(function()
 }, 5000);
 
 
-var scrollHeight;
+// var scrollHeight;
 
-jQuery('.home-banner.banner-content .inner-img-content').bind('scroll', function () {
-    if (jQuery(this).scrollTop() + jQuery(this).innerHeight() >= jQuery(this)[0].scrollHeight) {
-        jQuery('.home-banner.banner-content .inner-img-content').delay(100).animate({ scrollTop: 0 }, 900);
-    }
-});
-setInterval(function(){
-    jQuery(".home-banner.banner-content .inner-img-content").animate({
-      scrollTop: jQuery(
-        '.home-banner.banner-content .inner-img-content').get(0).scrollHeight
-   }, 3000);
-},3000);
+// jQuery('.home-banner.banner-content .inner-img-content').bind('scroll', function () {
+//     if (jQuery(this).scrollTop() + jQuery(this).innerHeight() >= jQuery(this)[0].scrollHeight) {
+//         jQuery('.home-banner.banner-content .inner-img-content').delay(100).animate({ scrollTop: 0 }, 900);
+//     }
+// });
+// setInterval(function(){
+//     jQuery(".home-banner.banner-content .inner-img-content").animate({
+//       scrollTop: jQuery(
+//         '.home-banner.banner-content .inner-img-content').get(0).scrollHeight
+//    }, 3000);
+// },3000);
 
 
 
