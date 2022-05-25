@@ -46,7 +46,7 @@
 								<?php if ( is_front_page() ) : ?>
 								<div class="col-lg-5 d-md-none d-none d-lg-block">
 									<div class="img-content">
-										<div class="inner-img-content mask1">
+										<div class="inner-img-content">
 											<?php if(get_sub_field('video_url')){ 
 												?>
 												<!--<iframe class="banner-video" src="<?php echo the_sub_field('video_url'); ?>?autoplay=1&amp;modestbranding=1&amp;showinfo=0" allowfullscreen="allowfullscreen"></iframe>-->
@@ -56,10 +56,7 @@
 												<?php
 											} else {
 												if (get_sub_field('image')) :
-													?>
-													
-													<div class="bg-animation" style="background-image: url(<?php echo the_sub_field('image'); ?>)"></div>
-													<?php
+													?><img src="<?php echo the_sub_field('image'); ?>" class="w-100" alt="<?php echo the_sub_field('title'); ?>"><?php
 												endif;
 											} ?>
 											<?php /* if (get_sub_field('image')) : ?>
@@ -249,10 +246,7 @@
 												<?php $extension = pathinfo(get_sub_field('icon_box_image'), PATHINFO_EXTENSION);
 													if($extension == 'svg'){
 														$icon_box_image = get_sub_field('icon_box_image');
-														echo file_get_contents($icon_box_image); 
-														?>
-														<object type="image/svg+xml" data="<?php echo $icon_box_image; ?>"></object>
-														<?php														
+														echo file_get_contents($icon_box_image);  
 													} else { ?>
 														<img src="<?php echo the_sub_field('icon_box_image'); ?>" alt="<?php echo the_sub_field('icon_box_title'); ?>" />
 												<?php } ?>
