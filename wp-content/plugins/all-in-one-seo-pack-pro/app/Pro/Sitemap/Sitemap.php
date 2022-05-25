@@ -21,11 +21,22 @@ class Sitemap extends CommonSitemap\Sitemap {
 	 * @since 4.0.0
 	 */
 	public function __construct() {
-		parent::__construct();
+		// We need to instantiate the classes here separately and cannot call the parent constructor because the
+		// base class with otherwise parse the request first and not give the Pro class a chance to parse it.
+		$this->content       = new CommonSitemap\Content();
+		$this->root          = new CommonSitemap\Root();
+		$this->file          = new CommonSitemap\File();
+		$this->image         = new CommonSitemap\Image();
+		$this->ping          = new CommonSitemap\Ping();
+		$this->output        = new CommonSitemap\Output();
+		$this->xsl           = new CommonSitemap\Xsl();
+		$this->localization  = new CommonSitemap\Localization();
+		$this->query         = new Query();
+		$this->priority      = new Priority();
+		$this->helpers       = new Helpers();
+		$this->requestParser = new RequestParser;
 
-		$this->query    = new Query();
-		$this->priority = new Priority();
-		$this->helpers  = new Helpers();
+		$this->disableWpSitemap();
 	}
 
 	/**

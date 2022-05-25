@@ -80,7 +80,7 @@ class Term extends CommonModels\Model {
 			$term->term_id = $termId;
 		}
 
-		return $term;
+		return apply_filters( 'aioseo_get_term', $term );
 	}
 
 	/**
@@ -99,7 +99,9 @@ class Term extends CommonModels\Model {
 
 		$theTerm = self::getTerm( $termId );
 		// Before setting the data, we check if the title/description are the same as the defaults and clear them if so.
-		$data    = self::checkForDefaultFormat( $termId, $theTerm, $data );
+		$data = self::checkForDefaultFormat( $termId, $theTerm, $data );
+
+		$theTerm = apply_filters( 'aioseo_save_term', $theTerm );
 		$theTerm = self::sanitizeAndSetDefaults( $termId, $theTerm, $data );
 
 		// Update traditional term meta so that it can be used by multilingual plugins.
@@ -128,17 +130,18 @@ class Term extends CommonModels\Model {
 	 * @return array          The data.
 	 */
 	private static function checkForDefaultFormat( $termId, $theTerm, $data ) {
-		if ( $theTerm->exists() ) {
-			$term            = get_term( $termId );
-			$metaTitle       = aioseo()->meta->title->getTaxonomyTitle( $term->taxonomy );
-			$metaDescription = aioseo()->meta->description->getTaxonomyDescription( $term->taxonomy );
-			if ( empty( $theTerm->title ) && ! empty( $data['title'] ) && trim( $data['title'] ) === trim( $metaTitle ) ) {
-				$data['title'] = null;
-			}
+		$data['title']       = trim( $data['title'] );
+		$data['description'] = trim( $data['description'] );
 
-			if ( empty( $theTerm->description ) && ! empty( $data['description'] ) && trim( $data['description'] ) === trim( $metaDescription ) ) {
-				$data['description'] = null;
-			}
+		$term                      = get_term( $termId );
+		$defaultTitleFormat       = trim( aioseo()->meta->title->getTaxonomyTitle( $term->taxonomy ) );
+		$defaultDescriptionFormat = trim( aioseo()->meta->description->getTaxonomyDescription( $term->taxonomy ) );
+		if ( ! empty( $data['title'] ) && $data['title'] === $defaultTitleFormat ) {
+			$data['title'] = null;
+		}
+
+		if ( ! empty( $data['description'] ) && $data['description'] === $defaultDescriptionFormat ) {
+			$data['description'] = null;
 		}
 
 		return $data;

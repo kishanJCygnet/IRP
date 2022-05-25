@@ -98,6 +98,10 @@ class DynamicOptions extends CommonOptions\DynamicOptions {
 		if ( isset( $this->proDefaults['breadcrumbs']['postTypes'] ) ) {
 			$postTypes = aioseo()->helpers->getPublicPostTypes();
 			foreach ( $postTypes as $postType ) {
+				if ( 'type' === $postType['name'] ) {
+					$postType['name'] = '_aioseo_type';
+				}
+
 				$this->proDefaults['breadcrumbs']['postTypes'][ $postType['name'] ] = array_merge( $breadcrumbTemplateOption,
 					[
 						'taxonomy'           => [
@@ -143,6 +147,10 @@ class DynamicOptions extends CommonOptions\DynamicOptions {
 		if ( isset( $this->proDefaults['breadcrumbs']['taxonomies'] ) ) {
 			$taxonomies = aioseo()->helpers->getPublicTaxonomies();
 			foreach ( $taxonomies as $taxonomy ) {
+				if ( 'type' === $taxonomy['name'] ) {
+					$taxonomy['name'] = '_aioseo_type';
+				}
+
 				$this->proDefaults['breadcrumbs']['taxonomies'][ $taxonomy['name'] ] = array_merge( $breadcrumbTemplateOption,
 					[
 						'showHomeCrumb'    => [

@@ -150,12 +150,20 @@ trait Vue {
 			$data['breadcrumbs']['defaultTemplates'] = [];
 			$postTypes = aioseo()->helpers->getPublicPostTypes();
 			foreach ( $postTypes as $postType ) {
+				if ( 'type' === $postType['name'] ) {
+					$postType['name'] = '_aioseo_type';
+				}
+
 				$data['breadcrumbs']['defaultTemplates']['postTypes'][ $postType['name'] ] =
 					aioseo()->helpers->encodeOutputHtml( aioseo()->breadcrumbs->frontend->getDefaultTemplate( 'single', $postType ) );
 			}
 
 			$taxonomies = aioseo()->helpers->getPublicTaxonomies();
 			foreach ( $taxonomies as $taxonomy ) {
+				if ( 'type' === $taxonomy['name'] ) {
+					$taxonomy['name'] = '_aioseo_type';
+				}
+
 				$data['breadcrumbs']['defaultTemplates']['taxonomies'][ $taxonomy['name'] ] =
 					aioseo()->helpers->encodeOutputHtml( aioseo()->breadcrumbs->frontend->getDefaultTemplate( 'taxonomy', $taxonomy ) );
 			}
