@@ -246,7 +246,10 @@
 												<?php $extension = pathinfo(get_sub_field('icon_box_image'), PATHINFO_EXTENSION);
 													if($extension == 'svg'){
 														$icon_box_image = get_sub_field('icon_box_image');
-														echo file_get_contents($icon_box_image);  
+														echo file_get_contents($icon_box_image); 
+														?>
+														<object type="image/svg+xml" data="<?php echo $icon_box_image; ?>"></object>
+														<?php														
 													} else { ?>
 														<img src="<?php echo the_sub_field('icon_box_image'); ?>" alt="<?php echo the_sub_field('icon_box_title'); ?>" />
 												<?php } ?>
