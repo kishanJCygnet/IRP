@@ -129,7 +129,7 @@ trait Assets {
 	 * @param  string $asset The script to load CSS for.
 	 * @return void
 	 */
-	private function loadCss( $asset ) {
+	public function loadCss( $asset ) {
 		if ( $this->shouldLoadDev() ) {
 			return;
 		}

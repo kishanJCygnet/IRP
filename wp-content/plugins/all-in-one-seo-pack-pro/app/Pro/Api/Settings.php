@@ -157,10 +157,8 @@ class Settings extends CommonApi\Settings {
 		$actionFound = true;
 		switch ( $action ) {
 			case 'clear-video-data':
-				// TODO: Refactor this to use the proper addons class.
-				$video = aioseo()->sitemap->addons['video'];
-				if ( ! empty( $video ) ) {
-					aioseo()->sitemap->addons['video']['query']->resetVideos();
+				if ( function_exists( 'aioseoVideoSitemap' ) ) {
+					aioseoVideoSitemap()->query->resetVideos();
 				}
 				break;
 			case 'undismiss-suggestions':

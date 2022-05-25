@@ -207,9 +207,9 @@ class VideoSitemap {
 				}
 			}
 
-			$sitemapAddons = aioseo()->sitemap->addons;
+			$isVideoLoaded = function_exists( 'aioseoVideoSitemap' );
 			$videoAddon    = aioseo()->addons->getAddon( 'aioseo-video-sitemap' );
-			if ( empty( $sitemapAddons ) && aioseo()->license->isActive() && $videoAddon->isActive ) {
+			if ( $isVideoLoaded && aioseo()->license->isActive() && $videoAddon->isActive ) {
 				try {
 					if ( ! as_next_scheduled_action( 'aioseo_regenerate_video_sitemap' ) ) {
 						as_schedule_single_action( time() + 5, 'aioseo_regenerate_video_sitemap', [], 'aioseo' );

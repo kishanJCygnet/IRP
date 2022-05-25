@@ -96,11 +96,12 @@ class Addons extends CommonUtils\Addons {
 	}
 
 	/**
-	 * Installs and activates a given addon or plugin.
+	 * Updates a given addon or plugin.
 	 *
-	 * @since 4.0.0
+	 * @since 4.1.6
 	 *
-	 * @return boolean Whether or not the installation was succesful.
+	 * @param  string $name The addon name/sku.
+	 * @return bool         Whether or not the installation was succesful.
 	 */
 	public function upgradeAddon( $name ) {
 		if ( ! $this->canUpdate() ) {
@@ -317,10 +318,10 @@ class Addons extends CommonUtils\Addons {
 		$minimumVersions = [
 			'aioseo-image-seo'      => '1.0.9',
 			'aioseo-link-assistant' => '1.0.5',
-			'aioseo-local-business' => '1.2.6',
-			'aioseo-news-sitemap'   => '1.0.7',
+			'aioseo-local-business' => '1.2.7',
+			'aioseo-news-sitemap'   => '1.0.8',
 			'aioseo-redirects'      => '1.1.9',
-			'aioseo-video-sitemap'  => '1.1.3',
+			'aioseo-video-sitemap'  => '1.1.4',
 			'aioseo-index-now'      => '1.0.3',
 			'aioseo-rest-api'       => '1.0.1'
 		];
@@ -341,8 +342,8 @@ class Addons extends CommonUtils\Addons {
 	 */
 	public function registerUpdateCheck() {
 		foreach ( $this->getAddons() as $addon ) {
-			// No need to check for updates if the addon is not installed or already active (the addon handles it).
-			if ( ! $addon->installed || $addon->isActive ) {
+			// No need to check for updates if the addon is not installed.
+			if ( ! $addon->installed ) {
 				continue;
 			}
 

@@ -22,17 +22,6 @@
 												<h3 class="text-white wow fadeInUp" data-wow-delay="0.6s"><?php echo the_sub_field('sub_title'); ?></h3>
 											<?php endif; ?>
 											</div>
-											<?php if (have_rows('tags')) : ?>
-												<div class="banner-tag">
-													<ul>
-													<?php while (have_rows('tags')) : the_row(); 
-															if (get_sub_field('tag_title')) :?>
-																<li><?php echo the_sub_field('tag_title'); ?></li>
-													<?php 	endif; 
-														endwhile; ?> 
-													</ul>
-												</div>
-											<?php endif;  ?>
 											<?php if (get_sub_field('primary_button_url') && get_sub_field('primary_button_label')) : ?>
 												<a href="<?php echo the_sub_field('primary_button_url'); ?>" class="btn btn-primary me-3 wow fadeInUp" data-wow-delay="0.9s"><?php echo the_sub_field('primary_button_label'); ?></a>
 											<?php endif; ?>
@@ -42,11 +31,13 @@
 											<?php //if( function_exists( 'aioseo_breadcrumbs' ) ) aioseo_breadcrumbs();  ?>
 										</div>
 									</div>
+									<?php if (get_sub_field('left_image')) : ?>
+										<div class="banner-left-image" style="background-image: url(<?php echo the_sub_field('left_image'); ?>)"></div>
+									<?php endif; ?>
 								</div>
-								<?php if ( is_front_page() ) : ?>
 								<div class="col-lg-5 d-md-none d-none d-lg-block">
 									<div class="img-content">
-									<div class="inner-img-content mask1">
+										<div class="inner-img-content mask1">
 											<?php if(get_sub_field('video_url')){ 
 												?>
 												<!--<iframe class="banner-video" src="<?php echo the_sub_field('video_url'); ?>?autoplay=1&amp;modestbranding=1&amp;showinfo=0" allowfullscreen="allowfullscreen"></iframe>-->
@@ -66,8 +57,12 @@
 											<?php endif; */ ?>
 										</div>
 									</div>
+									<?php if (get_sub_field('right_content')) : ?>
+									<div class="banner-right-content">
+										<?php echo the_sub_field('right_content'); ?>
+									</div>
+									<?php endif; ?>
 								</div>
-								<?php endif; ?>
 							</div>
 							</div>
 						</div>    
@@ -249,6 +244,11 @@
 													if($extension == 'svg'){
 														$icon_box_image = get_sub_field('icon_box_image');
 														echo file_get_contents($icon_box_image);  
+														/*$response = wp_remote_get($icon_box_image);
+														if ( is_array( $response ) && ! is_wp_error( $response ) ) {
+															//$headers = $response['headers']; // array of http header lines
+															echo $body = $response['body']; // use the content
+														}*/
 													} else { ?>
 														<img src="<?php echo the_sub_field('icon_box_image'); ?>" alt="<?php echo the_sub_field('icon_box_title'); ?>" />
 												<?php } ?>

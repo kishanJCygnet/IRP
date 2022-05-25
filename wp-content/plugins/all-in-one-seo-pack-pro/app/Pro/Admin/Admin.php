@@ -223,11 +223,8 @@ class Admin extends CommonAdmin\Admin {
 		parent::checkAdminQueryArgs();
 
 		// Allow users to force the plugin to rescan the site.
-		if ( isset( $_GET['aioseo-video-rescan'] ) ) {
-			$video = aioseo()->sitemap->addons['video'];
-			if ( ! empty( $video ) ) {
-				aioseo()->sitemap->addons['video']['query']->resetVideos();
-			}
+		if ( isset( $_GET['aioseo-video-rescan'] ) && function_exists( 'aioseoVideoSitemap' ) ) {
+			aioseoVideoSitemap()->query->resetVideos();
 		}
 	}
 
