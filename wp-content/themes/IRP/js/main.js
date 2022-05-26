@@ -108,7 +108,7 @@ jQuery(function() {
 
 function AddReadMore() {
   //This limit you can set after how much characters you want to show Read More.
-  var carLmt = 20;
+  var carLmt = 25;
   // Text to show when text is collapsed
   var readMoreTxt = " View More";
   // Text to show when text is expanded
