@@ -985,7 +985,7 @@ input[type=checkbox]:after{
     position: relative;
     padding: 120px 0 50px;
 }
-.banner-content.home-banner .banner-inner-content{
+.banner-content .banner-inner-content{
     min-height: 90vh;    
 }
 
@@ -1011,15 +1011,23 @@ input[type=checkbox]:after{
         transform: translateY(-15px);
       }
     }
-    .home-banner.banner-content .bottom-arrow{
+    .banner-content .bottom-arrow{
         display: none;
     }
 .banner-content.inner-page-banner .banner-inner-content,
 .post-type-archive-webinars .banner-inner-content,
-.half-banner .banner-inner-content {
-    height: 50vh;    
+.banner-content.half-banner .banner-inner-content {
+    max-height: 50vh;    
     min-height: 300px;
     background-position: center bottom;
+
+}
+.banner-content.half-banner{
+    background: transparent linear-gradient(270deg, #3CB4E6 0%, #009999 0%, #0F3764 100%) 0% 0% no-repeat padding-box;
+}
+.banner-content.half-banner .banner-inner-content .text-content h1{
+    text-align: center;
+    color: #fff;
 }
 .pagination {
     display: none;
@@ -1036,7 +1044,7 @@ input[type=checkbox]:after{
 .half-banner .align-items-center{
     justify-content: center;
 }
-.banner-content.half-banner .banner-text-heading-content h1{
+/* .banner-content.half-banner .banner-text-heading-content h1{
     font-size: 42px !important;
     font-weight: 600 !important;
     margin-bottom: 0 !important;
@@ -1048,14 +1056,14 @@ input[type=checkbox]:after{
 .banner-content .text-content{
     position: relative;
 }
-.banner-content .banner-inner-content .col-lg-7:not(.home-banner.banner-content .banner-inner-content .col-lg-7){
+.banner-content .banner-inner-content .col-lg-7:not(.banner-content .banner-inner-content .col-lg-7){
     width: 100%;
     text-align: center;
 }
 .banner-content .banner-inner-content .col-lg-7 > div{
     justify-content: center;
-    width: 100%;
-}
+    width: 100%; 
+}*/
 .post-type-archive-webinars .slide-content-main,
 .banner-content.inner-page-banner .slide-content-main
 {
@@ -1494,7 +1502,7 @@ section{
 /* esignature-solution  how-it-works */
 
 /* Home banner */
-.home-banner.banner-content .banner-inner-content{
+.banner-content .banner-inner-content{
     background-color: transparent;
     background-blend-mode: unset;
     background-image: url(./images/banner-bg.jpg) !important;
@@ -1502,17 +1510,17 @@ section{
     align-items: center;
     background-attachment: unset;
 }
-.home-banner.banner-content .banner-inner-content .text-content{
+.banner-content .banner-inner-content .text-content{
     margin-top: 30px;
     padding-right: 100px;  
     width: 100%;
 } 
-.home-banner.banner-content .banner-inner-content .text-content h1{
+.banner-content .banner-inner-content .text-content h1{
     font-size: 54px;
     line-height: 1;
     margin-bottom: 20px;
 }
-.home-banner.banner-content .banner-inner-content .text-content h3{
+.banner-content .banner-inner-content .text-content h3{
     font-size: 26px;
     font-weight: lighter;
     color: #414042 !important;
@@ -1560,7 +1568,7 @@ section{
 	100% { background-position: -2000px 0; }
 }
 
-/* .home-banner.banner-content .img-content{
+/* .banner-content .img-content{
     background-image: url(./images/Screen.png) !important;
     background-size: cover;
     background-repeat: no-repeat;
@@ -1571,7 +1579,7 @@ section{
     margin-top: 30px;
     right: 32px;
 } */
-/* .home-banner.banner-content .inner-img-content{
+/* .banner-content .inner-img-content{
     width: 496px;
     height: 279px;
     overflow: auto;
@@ -1579,10 +1587,10 @@ section{
     left: 39px;
     top: 29px;
 } */
-/* .home-banner.banner-content .col-lg-7 .align-items-center{
+/* .banner-content .col-lg-7 .align-items-center{
     align-items: flex-start !important;
 } */
-/* .home-banner .banner-text-heading-content{
+/*  .banner-text-heading-content{
     min-height: 300px;
 } */
 .owl-dots{
@@ -1778,7 +1786,7 @@ transform: scale(1);
     background-color: #fff;
 }
 .benefits .icon-box .icon:after{
-    border: 10px solid #ffffff;
+    border: 8px solid #ffffff;
     border-top-color: transparent;
     border-left-color: transparent;
 }
@@ -1812,6 +1820,137 @@ transform: scale(1);
     margin-bottom: 20px;
     color: #0C3761;
 }
+.about-feature .icon-box-title-content h3{
+position: relative;
+}
+.about-feature .icon-box-title-content h3:after{  
+    content: '';
+    background-image: url(./images/arrow.png);
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    right: 0px;
+    width: 28px;
+    height: 18px;
+    top: 5px;
+}
+.banner-right-icon ul {
+    padding-left: 0;
+    list-style-type: none;
+}
+.banner-right-icon ul li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    color: #414042;
+}
+.banner-right-icon ul li span{
+    background-color: #028e93;
+    padding: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 15px;
+
+}
+.banner-left-image{
+    width: 1000px;
+    background-size: contain;
+    height: 1500px;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: -231px;
+    top: -63px;
+    z-index: 3;
+}
+.banner-content  .col-lg-7 > .d-flex {
+    z-index: 5;
+    position: relative;
+}
+
+.banner-content.innerSection-page-banner .banner-inner-content .text-content h1{
+    font-size: 32px;
+    color: #fff;
+}
+.banner-content.innerSection-page-banner .banner-inner-content .text-content h3{
+    font-size: 18px;
+    color: #fff !important;
+    font-weight: normal;
+}
+.banner-content.innerSection-page-banner .banner-inner-content .text-content .btn-primary{
+    background: #fff;
+    color: #009999;
+}
+.about-cygnet-tax-tech h3{
+    margin-bottom: 50px;
+    padding-bottom: 15px;
+    position: relative;
+    color: #0C3761;
+}
+.about-cygnet-tax-tech .p2{
+    font-size: 16px !important;
+}
+.about-cygnet-tax-tech h3::before{
+    content: '';
+    position: absolute;
+    height: 4px;
+    background-color: #009999;
+    left: 0;
+    width: 100px;
+    top: 45px;
+    border-radius: 7px;
+}
+.about-cygnet-tax-tech .icon-box{
+    padding: 0 20px;
+    position: relative;
+}
+.about-cygnet-tax-tech .icon-box-list{
+    margin: 0 -20px;
+}
+.about-cygnet-tax-tech .icon-box:after{
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 64px;
+    height: 100px;
+    width: 1px;
+    background-color: #099;    
+}
+.about-cygnet-tax-tech .col-lg-4:last-child .icon-box:after{
+    display: none;
+}
+.Tech-enabled-Products .industry-highlight-text ul li h2{
+    font-size: 24px;
+    color: #0C3761;
+    margin-bottom: 20px;
+}
+.Tech-enabled-Products .industry-highlight-text ul li{
+    background-color: #edf8f8;
+    padding: 30px;
+    border-left: 5px solid #028d92;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    margin-bottom: 50px;
+}
+.Tech-enabled-Products .industry-highlight-text ul li:nth-child(even){
+    background-color: #edf8f8;
+    padding: 30px;
+    border-right: 5px solid #028d92;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    margin-bottom: 50px;
+    text-align: right;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-left: 0px;
+
+}
+.Tech-enabled-Products .industry-highlight-text ul li:last-child{
+    margin-bottom: 0;
+}
+.Tech-enabled-Products .industry-highlight-text ul{
+    padding: 0;
+    list-style-type: none;
+}
 @media only screen and (max-width: 1400px) {
     .primary-navigation .menu-wrapper li.menu-item{
         padding: 0 5px;
@@ -1837,11 +1976,11 @@ transform: scale(1);
     section{
         padding: 60px 0;
     }
-    .home-banner.banner-content .img-content{
+    .banner-content .img-content{
         height: 438px;
         width: 500px;
     }
-    .home-banner.banner-content .inner-img-content{
+    .banner-content .inner-img-content{
         width: 452px;
         height: 256px;
         overflow: auto;
@@ -1849,7 +1988,7 @@ transform: scale(1);
         left: 25px;
         top: 30px;
     }
-    .home-banner.banner-content .banner-inner-content{
+    .banner-content .banner-inner-content{
         height: 710px;
     }
 
@@ -1916,36 +2055,36 @@ transform: scale(1);
     .search.search-results h2{
         font-size: 22px;
     }
-    .home-banner.banner-content .banner-inner-content .text-content h1{
+    .banner-content .banner-inner-content .text-content h1{
         font-size: 40px
     }
     /* .banner-content .banner-inner-content{
         margin-top: 0;
     } */
-    .home-banner.banner-content .banner-inner-content{
+    .banner-content .banner-inner-content{
         background-size: cover;
         background-position: center 0px;
         height: auto;
         min-height: auto;
     }
-    .home-banner.banner-content .banner-inner-content .text-content{
+    .banner-content .banner-inner-content .text-content{
         margin-top: 5px;
     }
    
-    .home-banner.banner-content .img-content {
+    .banner-content .img-content {
         height: 364px;
         width: 410px;
     }
-    .home-banner.banner-content .inner-img-content{
+    .banner-content .inner-img-content{
         width: 377px;
         height: 213px;
         left: 18px;
         top: 25px;
     }
-    /* .home-banner .banner-text-heading-content{
+    /*  .banner-text-heading-content{
         min-height: 234px;
     } */
-    .home-banner.banner-content .img-content{
+    .banner-content .img-content{
         margin-top: 20px;
     }  
     
@@ -2121,26 +2260,26 @@ transform: scale(1);
     .navigation.pagination{
         margin-top: 80px;
     }
-    .home-banner.banner-content{
+    .banner-content{
          background: linear-gradient(263deg, rgba(24,181,123,1) 0%, #0c3761 100%), none;
     }
-    .home-banner.banner-content .banner-inner-content{
+    .banner-content .banner-inner-content{
         background-image: none !important;
         background-size: contain;
     }
-    .home-banner .banner-text-heading-content{
+     .banner-text-heading-content{
         min-height: auto;
         
     }
-    .home-banner.banner-content .banner-inner-content{
+    .banner-content .banner-inner-content{
         align-items: center;
         padding-top: 135px;
         padding-bottom: 80px;
     }
-    .home-banner.banner-content .banner-inner-content .text-content{
+    .banner-content .banner-inner-content .text-content{
         padding-right: 0;
     }
-    .home-banner .banner-tag ul{
+     .banner-tag ul{
         justify-content: center;
     }
     .banner-content h3 br{
@@ -2351,7 +2490,7 @@ transform: scale(1);
        .whatup-check > span:last-child{
            font-size: 14px;
        }
-       .home-banner.banner-content .banner-inner-content .text-content h1{
+       .banner-content .banner-inner-content .text-content h1{
            font-size: 30px;
        }
        a#contact_us{
