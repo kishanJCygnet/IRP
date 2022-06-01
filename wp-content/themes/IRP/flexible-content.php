@@ -79,7 +79,7 @@
 						animateOut: 'fadeOut',
 						animateIn: 'fadeIn',
 						items: 1,
-						autoplayTimeout: 7500,
+						autoplayTimeout: 10000,
 					});
 				});
 				</script>
@@ -243,12 +243,19 @@
 												<?php $extension = pathinfo(get_sub_field('icon_box_image'), PATHINFO_EXTENSION);
 													if($extension == 'svg'){
 														$icon_box_image = get_sub_field('icon_box_image');
-														echo file_get_contents($icon_box_image);  
+														//echo file_get_contents($icon_box_image);  
 														/*$response = wp_remote_get($icon_box_image);
 														if ( is_array( $response ) && ! is_wp_error( $response ) ) {
 															//$headers = $response['headers']; // array of http header lines
 															echo $body = $response['body']; // use the content
 														}*/
+														$stream_opts = [
+															"ssl" => [
+																"verify_peer"=>false,
+																"verify_peer_name"=>false,
+															]
+														];														 
+														echo file_get_contents($icon_box_image, false, stream_context_create($stream_opts));
 													} else { ?>
 														<img src="<?php echo the_sub_field('icon_box_image'); ?>" alt="<?php echo the_sub_field('icon_box_title'); ?>" />
 												<?php } ?>
@@ -256,13 +263,21 @@
 												<?php } ?>
 												<?php if (get_sub_field('icon_box_title')){ ?>
 													<div class="icon-box-title-content">
-														<h3><?php echo the_sub_field('icon_box_title'); ?></h3>
+														<h3>
+															<?php if (get_sub_field('icon_box_url')){ ?>
+																<a href="<?php echo the_sub_field('icon_box_url'); ?>">
+																	<?php echo the_sub_field('icon_box_title'); ?>
+																</a>
+															<?php } else { ?>
+																<?php echo the_sub_field('icon_box_title'); ?>
+															<?php } ?>
+														</h3>
 													</div>
 												<?php } ?>						   
 												<?php if (get_sub_field('icon_box_description')){ ?>
 													<div class="iconbox-description p2 showlesscontent"><?php echo the_sub_field('icon_box_description'); ?></div>
 												<?php } ?>
-												<?php if (get_sub_field('icon_box_url')){ ?>
+												<?php /*if (get_sub_field('icon_box_url')){ ?>
 													<div class="action">
 														<a href="<?php echo the_sub_field('icon_box_url'); ?>" class="readmore text-uppercase">Read More</a>
 													</div>
@@ -270,7 +285,7 @@
 													<!-- <div class="action">
 														<a href="javascript:void(0);" class="readmore text-uppercase">Read More</a>
 													</div> -->
-												<?php } ?>
+												<?php } */ ?>
 											</div>
 										</div>
 									</div>
@@ -507,6 +522,51 @@
 			endif; 
 			/* Contact Us Button End */
 			
+			/* Video Button Start */
+			if (get_row_layout() == 'video_button') : ?>
+				<?php if (get_sub_field('video_url')){ ?>
+					<section class="CTA-btn text-center bg-white pb-5 <?php echo the_sub_field('video_button_section_custom_class'); ?>">
+						<div class="container">
+							<div class="row">
+								<div class="col-md-12">
+									<a href="#" class="btn" data-bs-toggle="modal" data-bs-target="#videoModal" data-tagvideo="<?php echo the_sub_field('video_url'); ?>"><?php echo the_sub_field('video_button_label'); ?></a>
+								</div>
+							</div>
+						</div>
+				  </section>
+				  <div class="modal fade" id="videoModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+					  <div class="modal-dialog modal-lg">
+						<div class="modal-content">
+						  <div class="modal-body">
+							<div class="text-end"><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+							<div class="ratio ratio-16x9">								  
+							  <iframe src="" allow="autoplay;" allowfullscreen></iframe>
+							</div>
+						  </div>
+						</div>
+					  </div>
+					</div>
+					<script>
+					  jQuery(document).ready(function() {
+						autoPlayYouTubeModal();
+					  });
+					  function autoPlayYouTubeModal() {
+						  var triggerOpen = jQuery("body").find('[data-tagVideo]');
+						  triggerOpen.click(function() {
+							var theModal = jQuery(this).data("bs-target"),
+							  videoSRC = jQuery(this).attr("data-tagVideo"),
+							  videoSRCauto = videoSRC + "?autoplay=1";
+							  jQuery(theModal + ' iframe').attr('src', videoSRCauto);
+							  jQuery(theModal + ' button.btn-close').click(function() {
+							  jQuery(theModal + ' iframe').attr('src', videoSRC);
+							});
+						  });
+						}
+					</script>
+				<?php }
+			endif; 
+			/* Video Button End */
+			
 			/* Three Column Layout Start */
 			if (get_row_layout() == 'three_column_layout') :
 			?>
@@ -618,7 +678,14 @@
 												<?php $extension = pathinfo(get_sub_field('icon_box_image'), PATHINFO_EXTENSION);
 													if($extension == 'svg'){
 														$icon_box_image = get_sub_field('icon_box_image');
-														echo file_get_contents($icon_box_image);  
+														//echo file_get_contents($icon_box_image);  
+														$stream_opts = [
+															"ssl" => [
+																"verify_peer"=>false,
+																"verify_peer_name"=>false,
+															]
+														];														 
+														echo file_get_contents($icon_box_image, false, stream_context_create($stream_opts));
 													} else { ?>
 														<img src="<?php echo the_sub_field('icon_box_image'); ?>" alt="<?php echo the_sub_field('icon_box_title'); ?>" />
 												<?php } ?>
