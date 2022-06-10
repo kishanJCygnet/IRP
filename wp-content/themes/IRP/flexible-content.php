@@ -87,102 +87,6 @@
 		<?php endif;
 	/* End banner content */	
 	
-	/* Product Features Sections */
-	if (have_rows('product_features')) : ?>
-	<section class="py-0">
-		<div class="product-feature-tab">
-			<ul>
-				<?php while (have_rows('product_features')) : the_row(); 
-				$dynamicid = str_replace(' ', '_', get_sub_field('tab_title'));  ?>				
-						<li>
-							<a href="#<?php echo $dynamicid; ?>"><?php echo the_sub_field('tab_title'); ?></a>
-						</li>
-						<?php endwhile; ?>
-					</ul>
-				<span class="ac-fow"><i class="fas fa-angle-left"></i></span>
-				<span class="ac-back"><i class="fas fa-angle-right"></i></span>
-		</div>
-		<div class="product-feature">		
-				<?php $o=1; 
-				while (have_rows('product_features')) : the_row(); 
-				$dynamicinnerid = str_replace(' ', '_', get_sub_field('tab_title'));  ?>
-					<section id="<?php echo $dynamicinnerid; ?>">
-					<div class="container">
-						<div>
-							<div class="two-colum-layout cfr-tw-col-item left-title">	
-							<div class="two-colum-content">
-									<div class="col-left">								
-										<div class="d-flex align-items-center h-100 ">
-											<div>
-												<?php if (get_sub_field('title')){ ?>
-												<div class="content-title-heading">
-													<h2 class="wow fadeInUp" data-wow-delay="0.3s"><?php echo the_sub_field('title'); ?>
-														<span class="heading-border"></span>
-													</h2>
-												</div>
-												<?php } ?>						   
-												<?php if (get_sub_field('description')){ ?>
-													<div class="description p2 wow fadeInUp" data-wow-delay="0.6s"><?php echo the_sub_field('description'); ?></div>
-												<?php } ?>
-											</div>
-										</div>
-									</div>	
-									<div class="col-right">
-										<?php if (get_sub_field('image')){ ?>
-										<div class="icon">
-											<img src="<?php echo the_sub_field('image'); ?>" alt="<?php echo the_sub_field('title'); ?>" class=" wow fadeIn" data-wow-delay="0.9s" />
-										</div>
-										<?php } ?>
-									</div>
-							</div>		
-						</div>				
-						<?php if (have_rows('features')) :  ?>
-							<div class="accordion" id="accordionExample<?php echo $o; ?>">								
-									<?php $m=1;
-									while (have_rows('features')) : the_row(); ?>
-										<div class="accordion-content-item">
-											<div class="accordion-item">
-												<h2 class="accordion-header" id="heading<?php echo $o.'_'.$m; ?>">
-												  <!--<button class="accordion-button <?php if($m != 1){ ?> collapsed <?php } ?>" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?php echo $o.'_'.$m; ?>" aria-expanded="true" aria-controls="collapse<?php echo $o.'_'.$m; ?>">-->
-												  <button class="accordion-button <?php if($m == 1 && $o == 1){ echo ''; } else { ?> collapsed <?php } ?>" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?php echo $o.'_'.$m; ?>" aria-expanded="true" aria-controls="collapse<?php echo $o.'_'.$m; ?>">
-													<?php if (get_sub_field('feature_title')){ ?>
-														<span><?php echo the_sub_field('feature_title'); ?></span>
-													<?php } ?>	
-												  </button>
-												</h2>
-												<div id="collapse<?php echo $o.'_'.$m; ?>" class="accordion-collapse collapse <?php if($m == 1 && $o == 1){ ?> show <?php } ?>" aria-labelledby="heading<?php echo $o.'_'.$m; ?>" data-bs-parent="#accordionExample<?php echo $o; ?>">
-												  <div class="accordion-body">
-													<?php if (get_sub_field('feature_description')){ ?>
-														<div class="description p2"><?php echo the_sub_field('feature_description'); ?></div>
-													<?php } ?>
-												  </div>
-												</div>
-											</div>
-											<?php /*if (get_sub_field('feature_title')){ ?>
-												<span><?php echo the_sub_field('feature_title'); ?></span>
-											<?php } ?>						   
-											<?php if (get_sub_field('feature_description')){ ?>
-												<div class="description p2"><?php echo the_sub_field('feature_description'); ?></div>
-											<?php } */ ?>
-										</div>
-									<?php $m++; 
-									endwhile; ?>
-							</div>
-						<?php $o++;  
-						endif; ?>
-						<?php if (get_sub_field('button_url')){ ?>							
-							<div class="col-md-12 text-center">
-								<a href="<?php echo the_sub_field('button_url'); ?>" class="btn" ><?php echo the_sub_field('button_label'); ?></a>
-							</div>
-						<?php } ?>
-						</div>
-						</section>
-			<?php endwhile;  ?>			
-			</div>	
-		</section>
-	<?php endif; 
-	/* End Product Features Sections */
-
 	/* Manage content block */
 	if (have_rows('manage_content')) :
 	$logo_slider_cnt = 1;
@@ -806,7 +710,102 @@
 				</div>
 			</section>
 			<?php endif;  
-			/* Accordion code end */
+			/* Accordion code end */			
+			
+			/* Services Section code start */  
+			if (get_row_layout() == 'services_section') : ?> 
+			<section class="services-section <?php echo the_sub_field('services_section_class'); ?>">
+				<div class="services-section-main">
+					<div class="title-heading">
+						<?php if (get_sub_field('services_section_title')){ ?>
+							<h2><?php echo the_sub_field('services_section_title'); ?>
+								<span class="heading-border"></span>
+							</h2>
+						<?php } ?>
+						<?php if (get_sub_field('services_section_sub_title')){ ?>
+							<h3><?php echo the_sub_field('services_section_sub_title'); ?></h3>
+						<?php } ?>
+					</div>	
+					<?php if (have_rows('services_section_content')) : ?>					
+							
+								<?php $j = 0;
+								while (have_rows('services_section_content')) : the_row();	?>								
+									<div class="services-content-cls">
+										<div class="content">											
+											<div class="title text-start">
+												<?php if (get_sub_field('service_title')){ ?>
+													<h3>
+														<a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#exampleModal-<?php echo $j; ?>" class="read-more-link">
+															<?php echo the_sub_field('service_title'); ?>
+														</a>
+													</h3>													
+												<?php } ?>		
+											</div>
+											<?php if (have_rows('services_sub_section')) : ?>
+												<div class="list-tabs">
+													<?php while (have_rows('services_sub_section')) : the_row(); ?>
+														<div class="list-item">
+															<?php if (get_sub_field('services_sub_section_icon')){ ?>
+																<div class="icon">
+																	<?php $extension = pathinfo(get_sub_field('services_sub_section_icon'), PATHINFO_EXTENSION);
+																		if($extension == 'svg'){
+																			$services_sub_section_icon = get_sub_field('services_sub_section_icon');
+																			$stream_opts = [
+																				"ssl" => [
+																					"verify_peer"=>false,
+																					"verify_peer_name"=>false,
+																				]
+																			];														 
+																			echo file_get_contents($services_sub_section_icon, false, stream_context_create($stream_opts));
+																		} else { ?>
+																			<img src="<?php echo the_sub_field('services_sub_section_icon'); ?>" alt="<?php echo the_sub_field('services_sub_section_title'); ?>" />
+																	<?php } ?>
+																</div>
+															<?php } ?>
+															<?php if (get_sub_field('services_sub_section_title')){ ?>
+																<h4 class="list-title"><?php echo the_sub_field('services_sub_section_title'); ?></h4>
+															<?php } ?>
+														</div>
+													<?php endwhile; ?>
+												</div>
+											<?php endif; ?>
+										</div>
+									</div>		
+
+									<!-- Modal popup section start -->
+									<div class="modal fade" id="exampleModal-<?php echo $j; ?>" tabindex="-1" aria-labelledby="exampleModalLabel-<?php echo $j; ?>" aria-hidden="true">
+										<div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+											<div class="modal-content">
+												<div class="modal-header flex-lg-row flex-column border-bottom-0">
+													<?php if (get_sub_field('service_title')) : ?>
+														<h4 class="modal-title order-1 order-lg-0" id="exampleModalLabel-<?php echo $j; ?>"><?php echo the_sub_field('service_title'); ?></h4>
+													<?php endif; ?>
+													<a href="javascript:void(0);" class="back-link mb-4 mb-lg-0 align-self-end" data-bs-dismiss="modal" aria-label="Close" style="top:-4px;"><i class="bi bi-x-lg position-relative" aria-hidden="true"></i></a>
+													<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+														<i class="far fa-times"></i>
+													</button>
+												</div>
+												<div class="modal-body pt-0">
+													<?php
+													if (get_sub_field('service_description')) :
+														echo the_sub_field('service_description');
+													endif;
+													?>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Modal popup section end --> 
+									
+								<?php $j++;
+								endwhile; ?>
+										
+					<?php endif; ?>								
+				</div>
+			</section>
+			<?php endif;  
+			/* Services Section code end */		
+			
 			$logo_slider_cnt++;
 		endwhile;
 	endif; 	
