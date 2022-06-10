@@ -405,7 +405,7 @@ function twenty_twenty_one_scripts() {
 		wp_enqueue_style( 'twenty-twenty-one-style', get_template_directory_uri() . '/assets/css/ie.css', array(), wp_get_theme()->get( 'Version' ) );
 	} else {
 		// If not IE, use the standard stylesheet.
-		//wp_enqueue_style( 'twenty-twenty-one-style', get_template_directory_uri() . '/style.css', array(), wp_get_theme()->get( 'Version' ) );
+		wp_enqueue_style( 'twenty-twenty-one-style', get_template_directory_uri() . '/style.css', array(), wp_get_theme()->get( 'Version' ) );
 	}
 
 	// RTL styles.
@@ -640,3 +640,17 @@ function twentytwentyone_add_ie_class() {
 	<?php
 }
 add_action( 'wp_footer', 'twentytwentyone_add_ie_class' );
+
+if ( ! function_exists( 'wp_get_list_item_separator' ) ) :
+	/**
+	 * Retrieves the list item separator based on the locale.
+	 *
+	 * Added for backward compatibility to support pre-6.0.0 WordPress versions.
+	 *
+	 * @since 6.0.0
+	 */
+	function wp_get_list_item_separator() {
+		/* translators: Used between list items, there is a space after the comma. */
+		return __( ', ', 'twentytwentyone' );
+	}
+endif;

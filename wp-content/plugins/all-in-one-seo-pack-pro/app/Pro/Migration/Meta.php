@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use AIOSEO\Plugin\Common\Migration as CommonMigration;
 use AIOSEO\Plugin\Pro\Models;
-use AIOSEO\Plugin\Extend\VideoSitemap;
+use AIOSEO\Plugin\Addon\VideoSitemap;
 
 /**
  * Migrates the term meta from V3.
@@ -54,11 +54,11 @@ class Meta extends CommonMigration\Meta {
 			! empty( $videoSitemap ) &&
 			is_plugin_active( $videoSitemap->basename ) &&
 			aioseo()->license->isAddonAllowed( 'aioseo-video-sitemap' ) &&
-			class_exists( 'AIOSEO\\Plugin\\Extend\\VideoSitemap' ) &&
+			class_exists( 'AIOSEO\\Plugin\\Addon\\VideoSitemap\\VideoSitemap' ) &&
 			function_exists( 'aioseoVideoSitemap' )
 		) {
 			// The video sitemap has already been instantiated, let's grab it.
-			$this->videoSitemap = property_exists( aioseoVideoSitemap(), 'video' ) ? aioseoVideoSitemap()->video : new VideoSitemap\Video;
+			$this->videoSitemap = property_exists( aioseoVideoSitemap(), 'video' ) ? aioseoVideoSitemap()->video : new VideoSitemap\VideoSitemap\Video;
 		}
 	}
 
