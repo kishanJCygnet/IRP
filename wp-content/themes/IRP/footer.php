@@ -41,9 +41,9 @@
             <div class="footer-contents d-flex justify-content-end">
                 <!-- Footer logo begin -->
                 <div class="footer-logo">
-                    <a href="<?php echo site_url(); ?>" title="Cygnet Fintech" alt="Cygnet Fintech">
-                        <span class="visually-hidden">Cygnet Fintech</span>
-                        <img src='<?php echo get_field("footer_logo", "option"); ?>' alt="Cygnet Fintech">
+                    <a href="<?php echo site_url(); ?>" title="Cygnet IRP" alt="Cygnet IRP">
+                        <span class="visually-hidden">Cygnet IRP</span>
+                        <img src='<?php echo get_field("footer_logo", "option"); ?>' alt="Cygnet IRP">
                     </a>
                 </div>
                 <!-- Footer logo end -->
