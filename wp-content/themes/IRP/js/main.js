@@ -67,34 +67,6 @@ jQuery(function() {
 
 });
 
-    //  // Define selector for selecting
-    //     // anchor links with the hash
-    //     let anchorSelector = '.custom-tab-section .custom-tab-nav li a[href^="#"]';
-     
-    //     // Collect all such anchor links
-    //     let anchorList =
-    //         document.querySelectorAll(anchorSelector);
-         
-    //     // Iterate through each of the links
-    //     anchorList.forEach(link => {
-    //         link.onclick = function (e) {
-    //             // Prevent scrolling if the
-    //             // hash value is blank
-    //             e.preventDefault();
-         
-    //             // Get the destination to scroll to
-    //             // using the hash property
-    //             let destination =
-    //                 document.querySelector(this.hash);         
-    //             // Scroll to the destination using
-    //             // scrollIntoView method
-    //             destination.scrollIntoView({
-    //                 behavior: 'smooth',
-    //                 block: 'nearest' 
-    //             });
-    //         }
-    //     });
-
 
   jQuery(window).scroll(function() {
     var sticky = jQuery('header .navbar'),
@@ -359,24 +331,6 @@ setInterval(function()
 }, 5000);
 
 
-// var scrollHeight;
-
-// jQuery('.home-banner.banner-content .inner-img-content').bind('scroll', function () {
-//     if (jQuery(this).scrollTop() + jQuery(this).innerHeight() >= jQuery(this)[0].scrollHeight) {
-//         jQuery('.home-banner.banner-content .inner-img-content').delay(100).animate({ scrollTop: 0 }, 900);
-//     }
-// });
-// setInterval(function(){
-//     jQuery(".home-banner.banner-content .inner-img-content").animate({
-//       scrollTop: jQuery(
-//         '.home-banner.banner-content .inner-img-content').get(0).scrollHeight
-//    }, 3000);
-// },3000);
-
-
-
-
-
 jQuery(window).scroll(function() {    
   var scroll = jQuery(window).scrollTop();
 
@@ -405,19 +359,32 @@ else if(scroll >= 1200) {
 }
 });
 
-    jQuery('.ac-back').click(function(e) {
-          e.preventDefault();
-          jQuery('.product-feature-tab ul').animate({
-            scrollLeft: "+=200px"
-          }, "slow");
-      });
+  jQuery('.ac-back').click(function(e) {
+        e.preventDefault();
+        jQuery('.product-feature-tab ul').animate({
+          scrollLeft: "+=200px"
+        }, "slow");
+    });
 
-     jQuery('.ac-fow').click(function(e) {
+  jQuery('.ac-fow').click(function(e) {
       e.preventDefault();
       jQuery('.product-feature-tab ul').animate({
         scrollLeft: "-=200px"
       }, "slow");
    });
 
+  //  jQuery('.home #primary-menu-list li:nth-child(2)').removeClass('current-menu-item current_page_item');
+  //  jQuery('#primary-menu-list li').click(function(e) {
+  //     jQuery('#primary-menu-list li').removeClass('current-menu-item current_page_item');
+  //     jQuery(this).addClass('current-menu-item current_page_item');
+  //  });
+
+  //  jQuery('#primary-menu-list li:nth-child(2) > a').click(function(){
+  //   if (jQuery(window).width() < 992) {
+  //     jQuery('.navbar-collapse').removeClass('show');
+  //     jQuery('.navbar-toggler').attr("aria-expanded","false");     
+  //     jQuery('html').removeClass('overflow-h'); 
+  //    }
+  //  });
 
 
