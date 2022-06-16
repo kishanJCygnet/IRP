@@ -22,6 +22,11 @@
 												<h3 class="text-white wow fadeInUp" data-wow-delay="0.6s"><?php echo the_sub_field('sub_title'); ?></h3>
 											<?php endif; ?>
 											</div>
+											<?php if (get_sub_field('right_content')) : ?>
+											<div class="banner-right-content">
+												<?php echo the_sub_field('right_content'); ?>
+											</div>
+											<?php endif; ?>
 											<?php if (get_sub_field('primary_button_url') && get_sub_field('primary_button_label')) : ?>
 												<a href="<?php echo the_sub_field('primary_button_url'); ?>" class="btn btn-primary me-3 wow fadeInUp" data-wow-delay="0.9s"><?php echo the_sub_field('primary_button_label'); ?></a>
 											<?php endif; ?>
@@ -57,11 +62,11 @@
 											<?php endif; */ ?>
 										</div>
 									</div>
-									<?php if (get_sub_field('right_content')) : ?>
+									<?php /*if (get_sub_field('right_content')) : ?>
 									<div class="banner-right-content">
 										<?php echo the_sub_field('right_content'); ?>
 									</div>
-									<?php endif; ?>
+									<?php endif; */ ?>
 								</div>
 							</div>
 							</div>
@@ -84,8 +89,15 @@
 				});
 				</script>
 			</section>
-		<?php endif;
-	/* End banner content */	
+		<?php 
+		endif;
+	/* End banner content */
+	
+	/* Floating Button Section */ 	
+		if (get_field('floating_button_title') && get_field('floating_button_url')){ ?>
+			<a href="<?php echo the_field('floating_button_url'); ?>" class="btn <?php echo the_field('floating_button_class'); ?>" ><?php echo the_field('floating_button_title'); ?></a>
+		<?php }
+	/* End Floating Button Section */	
 	
 	/* Manage content block */
 	if (have_rows('manage_content')) :
@@ -140,7 +152,7 @@
 								<div class="row icon-box-list">
 								<?php while (have_rows('icon_box_content')) : the_row(); ?>
 									<div class="col-lg-<?php echo $dynamic_col; ?>">
-										<div class="icon-box wow fadeInUp" data-wow-delay="<?php echo $s; ?>s" data-wow-offset="30">
+										<div class="icon-box">
 											<div class="icon-box-inner">
 												<?php if (get_sub_field('icon_box_image')){ ?>
 												<div class="icon">
@@ -308,16 +320,18 @@
 			?>
 				<section class="two-colum-layout <?php echo $clsl; ?> <?php echo the_sub_field('two_column_section_custom_class'); ?>">
 					<div class="container">
-						<div class="title-heading">
-						<?php if (get_sub_field('title')){ ?>
-							<h2 class="wow fadeInUp" data-wow-delay="0.3s"><?php echo the_sub_field('title'); ?>
-								<span class="heading-border"></span>
-							</h2>
+						<?php if (get_sub_field('title') || get_sub_field('sub_title')){ ?>
+							<div class="title-heading">
+								<?php if (get_sub_field('title')){ ?>
+									<h2 class="wow fadeInUp" data-wow-delay="0.3s"><?php echo the_sub_field('title'); ?>
+										<span class="heading-border"></span>
+									</h2>
+								<?php } ?>
+								<?php if (get_sub_field('sub_title')){ ?>
+									<h3 class="wow fadeInUp" data-wow-delay="0.6s"><?php echo the_sub_field('sub_title'); ?></h3>
+								<?php } ?>
+							</div>
 						<?php } ?>
-						<?php if (get_sub_field('sub_title')){ ?>
-							<h3 class="wow fadeInUp" data-wow-delay="0.6s"><?php echo the_sub_field('sub_title'); ?></h3>
-						<?php } ?>
-						</div>
 						<div class="two-colum-content">
 							<div class="col-left">								
 								<div class="d-flex align-items-center h-100">
@@ -713,7 +727,7 @@
 			/* Accordion code end */			
 			
 			/* Services Section code start */  
-			if (get_row_layout() == 'services_section') : ?> 
+			/*if (get_row_layout() == 'services_section') : ?> 
 			<section class="services-section <?php echo the_sub_field('services_section_class'); ?>">
 				<div class="services-section-main">
 					<div class="title-heading">
@@ -801,6 +815,114 @@
 								endwhile; ?>
 										
 					<?php endif; ?>								
+				</div>
+			</section>
+			<?php endif;  
+			/* Services Section code end */		
+			
+			/* Services Section code start */  
+			if (get_row_layout() == 'services_section') : ?> 
+			<section class="services-section <?php echo the_sub_field('services_section_class'); ?>" id="valueaddedservices">
+				<div class="container">
+					<div class="services-section-main">
+						<div class="title-heading">
+							<?php if (get_sub_field('services_section_title')){ ?>
+								<h2><?php echo the_sub_field('services_section_title'); ?>
+									<span class="heading-border"></span>
+								</h2>
+							<?php } ?>
+							<?php if (get_sub_field('services_section_sub_title')){ ?>
+								<h3><?php echo the_sub_field('services_section_sub_title'); ?></h3>
+							<?php } ?>
+						</div>	
+						<?php if (have_rows('services_section_content')) : ?>					
+								<ul class="nav nav-tabs" id="myTab" role="tablist">
+								<?php $j = 0;
+									$service_title = '';
+									while (have_rows('services_section_content')) : the_row();	
+									$service_title = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '_', get_sub_field('service_title')));
+									?>	
+									  <li class="nav-item" role="presentation">
+										<button class="nav-link <?php if($j == 0){ ?> active <?php } ?>" id="<?php echo $service_title; ?>-tab" data-bs-toggle="tab" data-bs-target="#<?php echo $service_title; ?>" type="button" role="tab" aria-controls="<?php echo $service_title; ?>" aria-selected="true"><?php echo the_sub_field('service_title'); ?></button>
+									  </li>
+									<?php $j++;
+									endwhile; ?>
+								</ul>
+								
+								<div class="tab-content" id="myTabContent">
+								<?php $x = 0;
+									$service_title = '';
+									while (have_rows('services_section_content')) : the_row();	
+									$service_title = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '_', get_sub_field('service_title')));
+									?>	
+									  <div class="tab-pane fade <?php if($x == 0){ ?> show active <?php } ?>" id="<?php echo $service_title; ?>" role="tabpanel" aria-labelledby="<?php echo $service_title; ?>-tab">
+										<?php if (have_rows('services_sub_section')) : ?>
+											<div class="list-tabs">
+												<?php while (have_rows('services_sub_section')) : the_row(); ?>
+													<div class="list-item">
+														<?php if (get_sub_field('services_sub_section_icon')){ ?>
+															<div class="icon">
+																<?php $extension = pathinfo(get_sub_field('services_sub_section_icon'), PATHINFO_EXTENSION);
+																	if($extension == 'svg'){
+																		$services_sub_section_icon = get_sub_field('services_sub_section_icon');
+																		$stream_opts = [
+																			"ssl" => [
+																				"verify_peer"=>false,
+																				"verify_peer_name"=>false,
+																			]
+																		];														 
+																		echo file_get_contents($services_sub_section_icon, false, stream_context_create($stream_opts));
+																	} else { ?>
+																		<img src="<?php echo the_sub_field('services_sub_section_icon'); ?>" alt="<?php echo the_sub_field('services_sub_section_title'); ?>" />
+																<?php } ?>
+															</div>
+														<?php } ?>
+														<?php if (get_sub_field('services_sub_section_title')){ ?>
+															<h4 class="list-title"><?php echo the_sub_field('services_sub_section_title'); ?></h4>
+														<?php } ?>
+													</div>
+												<?php endwhile; ?>
+												<div class="text-center w-100">
+													<a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#exampleModal-<?php echo $x; ?>" class="read-more-link btn">
+														Other value added services<?php //echo the_sub_field('service_title'); ?>
+													</a>
+												</div>
+											</div>
+										<?php endif; ?>
+									  </div>
+									  
+									  <!-- Modal popup section start -->
+										<div class="modal fade" id="exampleModal-<?php echo $x; ?>" tabindex="-1" aria-labelledby="exampleModalLabel-<?php echo $x; ?>" aria-hidden="true">
+											<div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+												<div class="modal-content">
+													<div class="modal-header flex-lg-row flex-column border-bottom-0">
+														<?php if (get_sub_field('service_title')) : ?>
+															<h4 class="modal-title order-1 order-lg-0" id="exampleModalLabel-<?php echo $x; ?>"><?php echo the_sub_field('service_title'); ?></h4>
+														<?php endif; ?>
+														<a href="javascript:void(0);" class="back-link mb-4 mb-lg-0 align-self-end" data-bs-dismiss="modal" aria-label="Close" style="top:-4px;"><i class="bi bi-x-lg position-relative" aria-hidden="true"></i></a>
+														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+															<i class="far fa-times"></i>
+														</button>
+													</div>
+													<div class="modal-body pt-0">
+														<?php
+														if (get_sub_field('service_description')) :
+															echo the_sub_field('service_description');
+														endif;
+														?>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- Modal popup section end --> 
+									  
+									<?php $x++;
+									endwhile; ?>
+								</div>
+								
+											
+						<?php endif; ?>								
+					</div>
 				</div>
 			</section>
 			<?php endif;  
